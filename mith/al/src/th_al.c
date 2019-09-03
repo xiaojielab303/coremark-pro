@@ -683,6 +683,7 @@ Note:
  */
 size_t	al_fsize(const char *filename)
 {
+	return 0;
 #if	USE_TH_FILEIO
 	return 0; /* not implemented */
 #elif	HAVE_STAT_H || HAVE_SYS_STAT_H

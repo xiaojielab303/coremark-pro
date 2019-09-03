@@ -41,7 +41,7 @@ extern int bmark_verify_loops(void *);
 extern int bmark_clean_loops(void *);
 
 /* main function to create the workload, run it, and report results */
-int main(int argc, char *argv[])
+int pro_loops_main(int argc, char *argv[])
 {
 	char name[MITH_MAX_NAME];
 	char dataname_buf[MITH_MAX_NAME];
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 	if (orig_dataname) {
 		th_strncpy(dataname,"10k",MITH_MAX_NAME);
 	}
-	retval=define_params_loops(1,name,dataname);
+	retval=define_params_loops(0,name,dataname);
 	real_items[0]=helper_loopsallmid10ksp(workload,retval,name,bmark_init_loops,bench_repeats,t_run_test_loops,bmark_clean_loops,bmark_fini_loops,bmark_verify_loops,1,(e_u32)914965340,(e_u32)7685734);
 
 	/* Run the workload */

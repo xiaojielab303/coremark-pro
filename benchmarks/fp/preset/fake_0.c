@@ -11,9 +11,9 @@ Please refer to LICENSE.md for the specific license agreement that pertains to t
 */
 
 /*void init_preset_0() {}*/
-void init_preset_1() {}
+//void init_preset_1() {}
 void init_preset_2() {}
-void init_preset_3() {}
+//void init_preset_3() {}
 void init_preset_4() {}
 void init_preset_5() {}
 void init_preset_6() {}

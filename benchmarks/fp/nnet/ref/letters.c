@@ -264,7 +264,7 @@ static int ref_passes[] = {
 	363,
 	453}; /* ref passes */
 
-void init_preset_0() {
+void init_preset_0_nnet() {
 presets_nnet[0].seed=21672;
 presets_nnet[0].ref_data=ref_err_0;
 presets_nnet[0].d_x=5;

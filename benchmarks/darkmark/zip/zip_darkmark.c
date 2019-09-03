@@ -75,7 +75,7 @@ static const char *default_end = MULTI_LINE_STRING(
 #define max_entry 100
 
 static zip_params defaults[] = {
-	{NULL,13560,NULL,1048113,0x34f8,0,8989,0,NULL,0,0,0,0,0x1764}, /* dataset 0 */
+	{NULL,13560,NULL,525113,0x34f8,0,8989,0,NULL,0,0,0,0,0x1764}, /* dataset 0 */ //1048113  // 525113
 	{NULL,286,NULL,1000,0x011e,0,8989,0,NULL,0,0,0,99,0x6f87}	, /* dataset 1 */
 	{NULL,286,NULL,1000,0x011e,0,8989,0,NULL,0,0,0,0,0xd371}	, /* dataset 2 */
 	{NULL,377,NULL,1000,0x0179,0,8989,0,NULL,0,0,0,1,0xd853}	, /* dataset 3 */
@@ -99,6 +99,7 @@ static char *gen_parse_buf(e_u32 *psize, void *r, e_u32 record_type) {
 	/* setup xml/html header */
 	th_strcat(buf,default_start);
 	size-=start_size;
+	int i = start_size;
 	while (size > (end_size+max_entry)) 
 	{
 		/* add records until reaching required size */
@@ -116,9 +117,15 @@ static char *gen_parse_buf(e_u32 *psize, void *r, e_u32 record_type) {
 				th_sprintf(lbuf,"<p company='%s'><b>%s</b><data>%d</data></p>\n",company,name,id);
 				break;
 		}
+	#if 0
 		th_strcat(buf,lbuf);
+	#else
+		th_memcpy(&buf[i],lbuf,th_strlen(lbuf));
+		i+=th_strlen(lbuf);
+	#endif
 		size-=th_strlen(lbuf);
 	}
+	buf[i]='\0';
 	/* setup xml/html footer */
 	th_strcat(buf,default_end);
 	size-=end_size;
@@ -167,7 +174,7 @@ void *define_params_zip(unsigned int idx, char *name, char *dataset) {
 			params->zip_buf_len=fs;
 			th_fread(params->zip_buf,fs,1,f);
 		}
-		fclose(f);
+		th_fclose(f);
 	} else { /* generate sample data on the fly */
 		if (size==0)
 			size=params->unz_buf_len;

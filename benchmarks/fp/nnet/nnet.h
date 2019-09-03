@@ -77,7 +77,7 @@ typedef struct nnet_params_s {
 #define EXTRA_PASSES 10
 extern nnet_params presets_nnet[NUM_DATAS];
 void fill_preset_nnet(e_u8 *in_data, nnet_params *params);
-void init_preset_0();
+void init_preset_0_nnet();
 void init_preset_1();
  
 #endif

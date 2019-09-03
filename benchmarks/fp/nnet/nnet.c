@@ -21,7 +21,7 @@ Please refer to LICENSE.md for the specific license agreement that pertains to t
 #include "th_rand.h" /* initialize a random data vector */
 #include "nnet.h"
 
-extern void init_preset_0();
+extern void init_preset_0_nnet();
 nnet_params presets_nnet[NUM_DATAS];
 
 /* ======================================================================== */
@@ -78,7 +78,7 @@ void init_random_patterns(nnet_params *params) {
 void *define_params_nnet(unsigned int idx, char *name, char *dataset) {
     nnet_params *params;
 	e_s32 data_index=idx;
-	init_preset_0();
+	init_preset_0_nnet();
 	init_preset_1();
 
 	/* parameter setup */
